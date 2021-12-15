@@ -11,7 +11,7 @@ abstract class ArrayList<T> implements ListADT<T>{
     protected static final int DEFAULT_CAPACITY = 100;
     protected T[] array;
     protected int rear;
-    private int modcount;
+    protected int modcount;
 
     /**
      * Removes and returns the first element from this list.
@@ -127,7 +127,7 @@ abstract class ArrayList<T> implements ListADT<T>{
      * Shift the array Left
      * @param istart
      */
-    private void shiftLeft(int istart){
+    public void shiftLeft(int istart){
         for(int j = istart; j < rear-1; j++){
             array[j] = array[j+1];
         }

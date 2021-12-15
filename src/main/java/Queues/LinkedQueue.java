@@ -4,7 +4,7 @@ import Exceptions.EmptyCollectionException;
 import Interfaces.QueueADT;
 import Nodes.Node;
 
-public class LinkedQueue<T> implements QueueADT {
+public class LinkedQueue<T> implements QueueADT<T>{
     private Node<T> front;
     private Node<T> rear;
     private int counter;
@@ -38,15 +38,15 @@ public class LinkedQueue<T> implements QueueADT {
      * @return the element at the front of this queue
      */
     @Override
-    public Object dequeue() throws EmptyCollectionException {
+    public T dequeue() throws EmptyCollectionException {
         if(counter == 0){
             throw  new EmptyCollectionException("Lista Vazia");
         }
 
-        Node temp = this.front;
+        Node<T> temp = this.front;
         this.front = this.front.getNext();
         counter--;
-        return temp;
+        return temp.getData();
     }
 
     /**
@@ -56,11 +56,11 @@ public class LinkedQueue<T> implements QueueADT {
      * @return the first element in this queue
      */
     @Override
-    public Object first() throws EmptyCollectionException{
+    public T first() throws EmptyCollectionException{
         if(counter == 0){
             throw  new EmptyCollectionException("Lista Vazia");
         }
-        return front;
+        return front.getData();
     }
 
     /**
